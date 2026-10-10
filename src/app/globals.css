@@ -463,15 +463,41 @@ body {
 
 /* ——— Menú (estilo carta de Recién Horneado) ——— */
 
-.menu-card {
+/* Card de confirmar: una sola card que pasa de papel a rosado y de vuelta. */
+.rsvp-card {
   position: relative;
-  overflow: hidden;
   border-radius: 28px;
+  background: rgba(255, 250, 247, 0.86);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.rsvp-rose {
+  position: absolute;
+  inset: -1px;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  /* El degradé arranca en rosa claro y se asienta en el rosa del menú. */
   background:
     radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.25), transparent 60%),
-    var(--rose);
-  color: #fff;
-  box-shadow: var(--shadow);
+    linear-gradient(135deg, var(--blush) 0%, var(--rose-light) 22%, var(--rose) 45%, var(--rose) 70%, var(--rose-deep) 100%);
+  background-size: 100% 100%, 260% 260%;
+}
+
+.rsvp-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.35) 48%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.35) 52%, transparent 70%);
+}
+
+.rsvp-frame {
+  position: absolute;
+  inset: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 20px;
+  pointer-events: none;
 }
 
 .menu-title {

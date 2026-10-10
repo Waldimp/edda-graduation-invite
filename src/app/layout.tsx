@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Jost, Pinyon_Script } from "next/font/google";
+import { Cormorant_Garamond, Great_Vibes, Jost } from "next/font/google";
 import { event } from "@/lib/event";
 import "./globals.css";
 
@@ -10,7 +10,7 @@ const serif = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const script = Pinyon_Script({
+const script = Great_Vibes({
   variable: "--font-script",
   subsets: ["latin"],
   weight: "400",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0e1a2b",
+  themeColor: "#e8acae",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

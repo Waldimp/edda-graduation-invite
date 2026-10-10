@@ -2,7 +2,7 @@
 
 import { motion as m } from "motion/react";
 import { dishName, event, googleCalendarUrl } from "@/lib/event";
-import { Confetti, GradCap } from "./Decor";
+import { Blossom, Confetti, FlowerCluster, GradCap } from "./Decor";
 import { rise, stagger } from "./motion";
 import type { RsvpResult } from "./RsvpStage";
 
@@ -23,8 +23,10 @@ export function ThanksStage({ result, onHome }: { result: RsvpResult; onHome: ()
         </div>
       )}
 
-      <m.div variants={rise} className="w-24">
+      <m.div variants={rise} className="relative w-24">
         <GradCap className="floaty h-auto w-full drop-shadow-lg" />
+        <FlowerCluster className="-bottom-12 -left-24" scale={0.8} />
+        <FlowerCluster className="-bottom-12 -right-24" scale={0.8} flip />
       </m.div>
 
       <m.p variants={rise} className="kicker mt-6">
@@ -46,7 +48,9 @@ export function ThanksStage({ result, onHome }: { result: RsvpResult; onHome: ()
       )}
 
       <m.div variants={rise} className="ornament mt-8">
-        <span className="display text-sm tracking-[0.3em] text-gold-deep">{event.dateShort}</span>
+        <Blossom size={18} />
+        <span className="display text-sm tracking-[0.3em] text-rose-deep">{event.dateShort}</span>
+        <Blossom size={18} />
       </m.div>
 
       <m.div variants={rise} className="mt-10 flex flex-col items-center gap-4">

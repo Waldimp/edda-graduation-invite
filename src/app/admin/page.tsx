@@ -119,7 +119,7 @@ export default function AdminPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Clave"
-            className="w-full rounded-full border border-gold/40 bg-white/80 px-5 py-3 text-center outline-none focus:border-gold"
+            className="w-full rounded-full border border-rose/40 bg-white/80 px-5 py-3 text-center outline-none focus:border-rose-deep"
           />
           {error && <p className="text-sm text-rose-700">{error}</p>}
           <button className="btn-gold w-full">entrar</button>
@@ -166,7 +166,7 @@ export default function AdminPage() {
 
         <div className="mt-3 grid grid-cols-3 gap-3">
           {stats.byDish.map((d) => (
-            <Stat key={d.id} label={d.name} value={d.count} accent />
+            <Stat key={d.id} label={d.short} value={d.count} accent />
           ))}
         </div>
 
@@ -175,14 +175,14 @@ export default function AdminPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar por nombre o plato"
-            className="w-full rounded-full border border-gold/30 bg-white/80 px-5 py-3 outline-none focus:border-gold"
+            className="w-full rounded-full border border-rose/30 bg-white/80 px-5 py-3 outline-none focus:border-rose-deep"
           />
           <div className="flex gap-2">
             {(["todos", "si", "no"] as const).map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`rail-step whitespace-nowrap border border-gold/30 ${filter === f ? "active" : "bg-white/70"}`}
+                className={`rail-step whitespace-nowrap border border-rose/30 ${filter === f ? "active" : "bg-white/70"}`}
               >
                 {f === "todos" ? "todos" : labels[f]}
               </button>
@@ -202,10 +202,10 @@ export default function AdminPage() {
             </thead>
             <tbody>
               {filtered.map((row) => (
-                <tr key={row.id} className="border-t border-gold/20">
+                <tr key={row.id} className="border-t border-rose/20">
                   <td className="serif px-5 py-3 text-lg text-ink">{row.name}</td>
                   <td className="px-5 py-3">
-                    <span className={row.attending === "si" ? "text-gold-deep" : "text-muted"}>{labels[row.attending]}</span>
+                    <span className={row.attending === "si" ? "text-rose-deep" : "text-muted"}>{labels[row.attending]}</span>
                   </td>
                   <td className="px-5 py-3">{dishName(row.dish)}</td>
                   <td className="px-5 py-3 text-muted">{new Date(row.created_at).toLocaleString("es-SV")}</td>
@@ -228,9 +228,9 @@ export default function AdminPage() {
 
 function Stat({ label, value, accent = false }: { label: string; value: number; accent?: boolean }) {
   return (
-    <div className={`rounded-3xl border border-gold/25 p-4 sm:p-5 ${accent ? "bg-night text-ivory" : "bg-white/75"}`}>
-      <p className={`text-[0.6rem] uppercase tracking-[0.25em] ${accent ? "text-gold-light" : "text-muted"}`}>{label}</p>
-      <p className={`display mt-2 text-4xl ${accent ? "text-gold-light" : "text-gold-deep"}`}>{value}</p>
+    <div className={`rounded-3xl border border-rose/25 p-4 sm:p-5 ${accent ? "bg-rose text-white" : "bg-white/75"}`}>
+      <p className={`text-[0.6rem] uppercase tracking-[0.25em] ${accent ? "text-white" : "text-muted"}`}>{label}</p>
+      <p className={`display mt-2 text-4xl ${accent ? "text-white" : "text-rose-deep"}`}>{value}</p>
     </div>
   );
 }

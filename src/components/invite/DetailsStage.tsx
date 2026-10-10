@@ -2,10 +2,11 @@
 
 import { motion as m } from "motion/react";
 import { event, googleCalendarUrl } from "@/lib/event";
-import { PhotoFrame } from "./Decor";
+import { Blossom, Daisy, FlowerCluster, PhotoFrame } from "./Decor";
+import { MenuCard } from "./MenuCard";
 import { rise, stagger } from "./motion";
 
-/** Detalles: fecha, hora, lugar con mapa, código de vestimenta y recuerdos. */
+/** Detalles: fecha, hora, lugar con mapa, menú, código de vestimenta y recuerdos. */
 export function DetailsStage({ onNext }: { onNext: () => void }) {
   const mapEmbed = `https://maps.google.com/maps?q=${event.lat},${event.lng}&z=16&output=embed`;
 
@@ -25,6 +26,10 @@ export function DetailsStage({ onNext }: { onNext: () => void }) {
 
       {/* Fecha y hora */}
       <m.div variants={rise} className="card card-frame mt-8 w-full px-6 py-9">
+        <FlowerCluster className="-left-8 -top-10" scale={0.85} />
+        <div className="pointer-events-none absolute -bottom-4 -right-3">
+          <Daisy size={40} className="spin-slow" />
+        </div>
         <p className="kicker">{event.weekday}</p>
         <div className="mt-3 flex items-center justify-center gap-5">
           <span className="serif text-lg uppercase tracking-[0.25em] text-ink">{event.month}</span>
@@ -40,14 +45,14 @@ export function DetailsStage({ onNext }: { onNext: () => void }) {
       </m.div>
 
       {/* Lugar */}
-      <m.div variants={rise} className="card mt-6 w-full overflow-hidden">
+      <m.div variants={rise} className="card mt-8 w-full overflow-hidden">
         <div className="px-6 pb-5 pt-8">
           <p className="kicker">el lugar</p>
           <p className="display mt-3 text-4xl text-ink">{event.venue}</p>
-          <p className="serif mt-1 text-lg italic text-gold-deep">{event.venueDetail}</p>
+          <p className="serif mt-1 text-lg italic text-rose-deep">{event.venueDetail}</p>
           <p className="mt-2 text-sm text-muted">{event.address}</p>
         </div>
-        <div className="relative mx-4 h-56 overflow-hidden rounded-2xl border border-gold/30" data-no-swipe>
+        <div className="relative mx-4 h-56 overflow-hidden rounded-2xl border border-rose/30" data-no-swipe>
           <iframe
             title={`Mapa de ${event.venue}`}
             src={mapEmbed}
@@ -63,8 +68,20 @@ export function DetailsStage({ onNext }: { onNext: () => void }) {
         </div>
       </m.div>
 
+      {/* Menú */}
+      <m.div variants={rise} className="relative mt-10 w-full">
+        <p className="kicker mb-4">qué vamos a desayunar</p>
+        <MenuCard compact />
+        <p className="serif mt-3 text-base italic text-muted">Eliges tu plato al confirmar.</p>
+      </m.div>
+
       {/* Código de vestimenta */}
       <m.div variants={rise} className="mt-10">
+        <div className="mb-2 flex justify-center gap-1">
+          <Blossom size={18} />
+          <Blossom size={14} color="var(--rose-light)" center="var(--rose-deep)" />
+          <Blossom size={18} />
+        </div>
         <p className="kicker">código de vestimenta</p>
         <p className="serif mt-2 text-2xl italic text-ink">{event.dressCode}</p>
       </m.div>

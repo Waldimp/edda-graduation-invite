@@ -1,37 +1,40 @@
 @import "tailwindcss";
 
 /*
- * Identidad provisional: azul noche + marfil + dorado champán.
- * Para cambiar la paleta basta con tocar estos tokens.
+ * Identidad: rosa empolvado del menú de Recién Horneado + crema + toques
+ * dorados y hojitas salvia. Para cambiar la paleta basta con tocar estos tokens.
  */
 :root {
-  --night: #0e1a2b;
-  --night-2: #16263d;
-  --night-3: #21364f;
-  --ivory: #f8f4ec;
-  --paper: #f1eadc;
-  --paper-deep: #e6dcc8;
-  --ink: #1c2a3b;
-  --muted: #6f6a60;
-  --gold: #b8955a;
-  --gold-light: #e3cb94;
-  --gold-deep: #8a6b37;
-  --line: rgba(184, 149, 90, 0.38);
-  --shadow: 0 24px 60px rgba(14, 26, 43, 0.16);
+  --rose: #e8acae;
+  --rose-light: #f6d6d6;
+  --rose-deep: #c47c86;
+  --rose-dark: #9b5866;
+  --blush: #fbe9e8;
+  --petal: #fdf4f2;
+  --cream: #fffaf7;
+  --ink: #5a3a42;
+  --muted: #8f7176;
+  --gold: #c9a46c;
+  --gold-light: #ecd3a3;
+  --leaf: #a3b89c;
+  --leaf-deep: #7f9978;
+  --line: rgba(196, 124, 134, 0.34);
+  --shadow: 0 24px 60px rgba(155, 88, 102, 0.16);
 }
 
 @theme inline {
-  --color-night: var(--night);
-  --color-night-2: var(--night-2);
-  --color-night-3: var(--night-3);
-  --color-ivory: var(--ivory);
-  --color-paper: var(--paper);
-  --color-paper-deep: var(--paper-deep);
+  --color-rose: var(--rose);
+  --color-rose-light: var(--rose-light);
+  --color-rose-deep: var(--rose-deep);
+  --color-rose-dark: var(--rose-dark);
+  --color-blush: var(--blush);
+  --color-petal: var(--petal);
+  --color-cream: var(--cream);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-gold-deep: var(--gold-deep);
+  --color-leaf: var(--leaf);
   --font-sans: var(--font-body);
   --font-serif: var(--font-serif);
   --font-script: var(--font-script);
@@ -40,7 +43,7 @@
 html,
 body {
   min-height: 100%;
-  background: var(--ivory);
+  background: var(--petal);
   color: var(--ink);
 }
 
@@ -56,35 +59,36 @@ body {
   min-height: 100dvh;
   overflow-x: hidden;
   touch-action: pan-y;
-  background-color: var(--ivory);
+  background-color: var(--petal);
   transition: background-color 1.2s ease;
 }
 
-.stage-root.is-night {
-  background-color: var(--night);
+.stage-root.is-cover {
+  background-color: var(--rose);
 }
 
-/* Papel marfil con grano sutil y viñeta cálida. */
+/* Papel rosado con florcitas muy sutiles y luz cálida. */
 .paper-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(227, 203, 148, 0.22), transparent 60%),
-    radial-gradient(ellipse at 50% 110%, rgba(184, 149, 90, 0.14), transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.28 0 0 0 0 0.18 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    radial-gradient(ellipse at 50% 0%, rgba(232, 172, 174, 0.32), transparent 60%),
+    radial-gradient(ellipse at 50% 110%, rgba(232, 172, 174, 0.28), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23e8acae' fill-opacity='.22'%3E%3Cg transform='translate(24 26)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Cg transform='translate(86 84) scale(.7)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23c9a46c' fill-opacity='.3'%3E%3Ccircle cx='24' cy='26' r='1.6'/%3E%3Ccircle cx='86' cy='84' r='1.2'/%3E%3Ccircle cx='70' cy='30' r='1'/%3E%3Ccircle cx='30' cy='90' r='1'/%3E%3C/g%3E%3C/svg%3E"),
+    var(--petal);
 }
 
-.night-bg {
+.cover-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 35%, rgba(227, 203, 148, 0.16), transparent 55%),
-    radial-gradient(ellipse at 50% 120%, var(--night-3), transparent 60%),
-    var(--night);
+    radial-gradient(ellipse at 50% 38%, rgba(255, 250, 247, 0.5), transparent 58%),
+    radial-gradient(ellipse at 50% 120%, var(--rose-deep), transparent 60%),
+    var(--rose);
 }
 
 .sparkle {
@@ -92,8 +96,8 @@ body {
   width: var(--size, 3px);
   height: var(--size, 3px);
   border-radius: 999px;
-  background: var(--gold-light);
-  box-shadow: 0 0 10px rgba(227, 203, 148, 0.8);
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
   animation: twinkle var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
 }
 
@@ -106,6 +110,35 @@ body {
   50% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* Pétalos que caen en la portada. */
+.petal {
+  position: absolute;
+  top: -40px;
+  width: var(--size, 14px);
+  height: calc(var(--size, 14px) * 0.75);
+  border-radius: 80% 0 80% 0;
+  background: linear-gradient(135deg, #fff, var(--rose-light));
+  opacity: 0.85;
+  animation: petal-fall var(--dur, 12s) linear var(--delay, 0s) infinite;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(var(--drift, 40px), 55vh, 0) rotate(200deg);
+  }
+  100% {
+    transform: translate3d(calc(var(--drift, 40px) * -0.5), 110vh, 0) rotate(420deg);
+    opacity: 0;
   }
 }
 
@@ -125,8 +158,9 @@ body {
   top: max(2.2rem, env(safe-area-inset-top));
   left: 0;
   right: 0;
+  z-index: 3;
   text-align: center;
-  color: var(--gold-light);
+  color: var(--cream);
 }
 
 .envelope {
@@ -147,16 +181,16 @@ body {
 }
 
 .env-back {
-  background: linear-gradient(180deg, #e9dfcb, #ddd0b6);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(180deg, #f6e9e6, #efdcd8);
+  box-shadow: 0 40px 70px rgba(155, 88, 102, 0.35);
 }
 
 .env-pocket {
   z-index: 4;
   background:
-    linear-gradient(155deg, transparent 49.6%, rgba(138, 107, 55, 0.18) 50%, transparent 50.6%),
-    linear-gradient(205deg, transparent 49.6%, rgba(138, 107, 55, 0.18) 50%, transparent 50.6%),
-    linear-gradient(180deg, #f3ecdd, #e8dcc4);
+    linear-gradient(155deg, transparent 49.6%, rgba(196, 124, 134, 0.18) 50%, transparent 50.6%),
+    linear-gradient(205deg, transparent 49.6%, rgba(196, 124, 134, 0.18) 50%, transparent 50.6%),
+    linear-gradient(180deg, #fffaf7, #f7ebe8);
   clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
   pointer-events: none;
 }
@@ -165,7 +199,7 @@ body {
   z-index: 5;
   height: 60%;
   transform-origin: 50% 0;
-  background: linear-gradient(180deg, #efe6d3, #e2d5bb);
+  background: linear-gradient(180deg, #fbf1ee, #f1e1dc);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   pointer-events: none;
 }
@@ -182,9 +216,9 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  background: var(--ivory);
+  background: var(--cream);
   border: 1px solid var(--line);
-  box-shadow: 0 10px 30px rgba(14, 26, 43, 0.12);
+  box-shadow: 0 10px 30px rgba(155, 88, 102, 0.12);
   text-align: center;
   color: var(--ink);
 }
@@ -206,22 +240,27 @@ body {
   width: clamp(64px, 18vw, 86px);
   aspect-ratio: 1;
   translate: -50% -50%;
+  pointer-events: none;
+}
+
+.wax-seal-disc {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
   border-radius: 46% 54% 50% 50% / 52% 48% 52% 48%;
   background:
-    radial-gradient(circle at 35% 30%, #f1dca6, transparent 45%),
-    radial-gradient(circle at 50% 50%, #c7a466, #8a6b37 75%);
+    radial-gradient(circle at 35% 30%, #f7d3d6, transparent 45%),
+    radial-gradient(circle at 50% 50%, #d38d97, #a85d6c 78%);
   box-shadow:
-    inset 0 0 0 5px rgba(138, 107, 55, 0.45),
-    inset 0 -6px 12px rgba(80, 58, 25, 0.35),
-    0 8px 18px rgba(0, 0, 0, 0.35);
-  color: #fff6df;
+    inset 0 0 0 5px rgba(155, 88, 102, 0.4),
+    inset 0 -6px 12px rgba(110, 50, 62, 0.3),
+    0 8px 18px rgba(110, 50, 62, 0.3);
+  color: #fff4f2;
   font-family: var(--font-script), cursive;
   font-size: clamp(2rem, 7vw, 2.6rem);
   line-height: 1;
-  text-shadow: 0 1px 1px rgba(80, 58, 25, 0.6);
-  pointer-events: none;
+  text-shadow: 0 1px 1px rgba(110, 50, 62, 0.5);
 }
 
 .cover-hit {
@@ -248,7 +287,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: var(--cream);
 }
 
 .grad-cap {
@@ -260,15 +299,47 @@ body {
   margin-left: calc(clamp(90px, 26vw, 130px) / -2);
   margin-top: -40px;
   pointer-events: none;
-  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 12px 18px rgba(110, 50, 62, 0.3));
 }
 
 .confetti-piece {
   position: absolute;
   left: 50%;
   top: 50%;
-  border-radius: 1px;
   pointer-events: none;
+}
+
+/* ——— Florcitas ——— */
+
+.flower {
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.sway {
+  transform-origin: 50% 100%;
+  animation: sway 7s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ——— Tipografía ——— */
@@ -277,15 +348,15 @@ body {
   font-family: var(--font-body), sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.38em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: var(--gold-deep);
+  color: var(--rose-deep);
 }
 
 .script {
   font-family: var(--font-script), cursive;
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
 .serif {
@@ -300,8 +371,9 @@ body {
   text-transform: uppercase;
 }
 
+/* Texto rosa dorado con brillo suave. */
 .gold-text {
-  background: linear-gradient(100deg, var(--gold-deep) 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, var(--gold-deep) 100%);
+  background: linear-gradient(100deg, var(--rose-dark) 0%, var(--rose-deep) 28%, var(--gold) 50%, var(--rose-deep) 72%, var(--rose-dark) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -324,7 +396,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  color: var(--gold);
+  color: var(--rose-deep);
 }
 
 .ornament::before,
@@ -332,11 +404,11 @@ body {
   content: "";
   height: 1px;
   width: clamp(36px, 14vw, 72px);
-  background: linear-gradient(90deg, transparent, var(--gold));
+  background: linear-gradient(90deg, transparent, var(--rose-deep));
 }
 
 .ornament::after {
-  background: linear-gradient(270deg, transparent, var(--gold));
+  background: linear-gradient(270deg, transparent, var(--rose-deep));
 }
 
 /* ——— Tarjetas y marcos ——— */
@@ -344,7 +416,7 @@ body {
 .card {
   position: relative;
   border-radius: 28px;
-  background: rgba(255, 252, 245, 0.82);
+  background: rgba(255, 250, 247, 0.86);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   backdrop-filter: blur(6px);
@@ -354,7 +426,7 @@ body {
   content: "";
   position: absolute;
   inset: 10px;
-  border: 1px solid var(--line);
+  border: 1px dashed var(--line);
   border-radius: 20px;
   pointer-events: none;
 }
@@ -365,16 +437,16 @@ body {
   border-radius: 999px 999px 18px 18px;
   border: 1px solid var(--line);
   background:
-    radial-gradient(circle at 50% 35%, rgba(227, 203, 148, 0.35), transparent 60%),
-    linear-gradient(180deg, var(--paper), var(--paper-deep));
-  box-shadow: 0 0 0 8px rgba(255, 252, 245, 0.9), 0 0 0 9px var(--line), var(--shadow);
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.7), transparent 60%),
+    linear-gradient(180deg, var(--blush), var(--rose-light));
+  box-shadow: 0 0 0 8px rgba(255, 250, 247, 0.95), 0 0 0 9px var(--line), var(--shadow);
 }
 
 .photo-polaroid {
   position: relative;
-  background: #fffdf8;
+  background: #fffdfb;
   padding: 8px 8px 30px;
-  box-shadow: 0 14px 30px rgba(14, 26, 43, 0.16);
+  box-shadow: 0 14px 30px rgba(155, 88, 102, 0.16);
 }
 
 .photo-empty {
@@ -385,8 +457,90 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  color: var(--gold-deep);
+  color: var(--rose-deep);
   text-align: center;
+}
+
+/* ——— Menú (estilo carta de Recién Horneado) ——— */
+
+.menu-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.25), transparent 60%),
+    var(--rose);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.menu-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.menu-subtitle {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 300;
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.menu-dish {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0.85rem 1rem 0.95rem;
+  text-align: left;
+  color: #fff;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+button.menu-dish:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.menu-dish.on {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1.5px #fff;
+}
+
+.menu-dish-name {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.15;
+}
+
+.menu-dish-desc {
+  margin-top: 0.3rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  text-align: justify;
+  hyphens: auto;
+  opacity: 0.95;
+}
+
+.menu-radio {
+  display: grid;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  place-items: center;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.menu-dish.on .menu-radio {
+  background: #fff;
+  color: var(--rose-dark);
 }
 
 /* ——— Botones ——— */
@@ -398,19 +552,19 @@ body {
   gap: 0.6rem;
   border-radius: 999px;
   padding: 0.95rem 1.8rem;
-  background: linear-gradient(135deg, var(--gold-deep), var(--gold) 45%, var(--gold-light) 100%);
-  color: #fffaf0;
+  background: linear-gradient(135deg, var(--rose-dark), var(--rose-deep) 55%, var(--rose) 100%);
+  color: #fff;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  box-shadow: 0 10px 24px rgba(138, 107, 55, 0.3);
+  box-shadow: 0 10px 24px rgba(196, 124, 134, 0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(138, 107, 55, 0.38);
+  box-shadow: 0 14px 30px rgba(196, 124, 134, 0.45);
 }
 
 .btn-gold:disabled {
@@ -427,7 +581,7 @@ body {
   border-radius: 999px;
   padding: 0.85rem 1.4rem;
   border: 1px solid var(--line);
-  background: rgba(255, 252, 245, 0.7);
+  background: rgba(255, 250, 247, 0.75);
   color: var(--ink);
   font-size: 0.72rem;
   font-weight: 500;
@@ -437,8 +591,8 @@ body {
 }
 
 .btn-ghost:hover {
-  border-color: var(--gold);
-  background: #fffdf8;
+  border-color: var(--rose-deep);
+  background: #fff;
 }
 
 .btn-link {
@@ -449,7 +603,7 @@ body {
 }
 
 .btn-link:hover {
-  color: var(--gold-deep);
+  color: var(--rose-dark);
 }
 
 /* ——— RSVP ——— */
@@ -462,21 +616,21 @@ body {
   gap: 1rem;
   border-radius: 22px;
   border: 1px solid var(--line);
-  background: rgba(255, 252, 245, 0.85);
+  background: rgba(255, 250, 247, 0.9);
   padding: 1.1rem 1.25rem;
   text-align: left;
   transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .choice:hover {
-  border-color: var(--gold);
+  border-color: var(--rose-deep);
   transform: translateY(-2px);
 }
 
 .choice.on {
-  border-color: var(--gold);
-  background: #fffaf0;
-  box-shadow: 0 0 0 3px rgba(184, 149, 90, 0.2), 0 12px 26px rgba(138, 107, 55, 0.16);
+  border-color: var(--rose-deep);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(232, 172, 174, 0.35), 0 12px 26px rgba(196, 124, 134, 0.18);
 }
 
 .choice-mark {
@@ -489,13 +643,13 @@ body {
   border: 1px solid var(--line);
   font-family: var(--font-serif), serif;
   font-size: 1.15rem;
-  color: var(--gold-deep);
+  color: var(--rose-deep);
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .choice.on .choice-mark {
-  background: linear-gradient(135deg, var(--gold-deep), var(--gold-light));
-  color: #fffaf0;
+  background: linear-gradient(135deg, var(--rose-deep), var(--rose));
+  color: #fff;
   border-color: transparent;
 }
 
@@ -514,11 +668,11 @@ body {
 }
 
 .name-input::placeholder {
-  color: rgba(111, 106, 96, 0.45);
+  color: rgba(143, 113, 118, 0.45);
 }
 
 .name-input:focus {
-  border-color: var(--gold);
+  border-color: var(--rose-deep);
 }
 
 .step-dot {
@@ -531,7 +685,7 @@ body {
 
 .step-dot.on {
   width: 26px;
-  background: var(--gold);
+  background: var(--rose-deep);
 }
 
 .chip {
@@ -540,7 +694,7 @@ body {
   gap: 0.4rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: #fffaf0;
+  background: #fff;
   padding: 0.4rem 0.9rem;
   font-size: 0.78rem;
   color: var(--ink);
@@ -565,10 +719,10 @@ body {
   gap: 0.35rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(255, 252, 245, 0.78);
+  background: rgba(255, 250, 247, 0.82);
   padding: 0.35rem 0.5rem;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 22px rgba(14, 26, 43, 0.08);
+  box-shadow: 0 8px 22px rgba(155, 88, 102, 0.1);
   pointer-events: auto;
 }
 
@@ -583,12 +737,12 @@ body {
 }
 
 .rail-step.active {
-  background: var(--night);
-  color: var(--gold-light);
+  background: var(--rose);
+  color: #fff;
 }
 
 .rail-step.done {
-  color: var(--gold-deep);
+  color: var(--rose-dark);
 }
 
 .rail-thread {
@@ -620,7 +774,7 @@ body {
 @keyframes pulse-soft {
   0%,
   100% {
-    opacity: 0.55;
+    opacity: 0.6;
   }
   50% {
     opacity: 1;
@@ -634,8 +788,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .sparkle,
+  .petal,
   .gold-text,
   .floaty,
+  .sway,
+  .spin-slow,
   .pulse-soft {
     animation: none;
   }

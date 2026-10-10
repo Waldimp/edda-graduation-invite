@@ -2,7 +2,9 @@
 
 import { AnimatePresence, motion as m } from "motion/react";
 import { useState, type FormEvent } from "react";
-import { dishes, dishName, type DishId } from "@/lib/event";
+import { dishShort, type DishId } from "@/lib/event";
+import { Blossom, FlowerCluster } from "./Decor";
+import { MenuCard } from "./MenuCard";
 import { easeCinema, playWhoosh } from "./motion";
 
 type Attending = "si" | "no";
@@ -36,6 +38,7 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
     setDir(steps.indexOf(next) >= index ? 1 : -1);
     setStep(next);
     playWhoosh();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function chooseAttending(value: Attending) {
@@ -45,6 +48,7 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
       setDir(1);
       setStep(value === "si" ? "dish" : "name");
       playWhoosh();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }, 420);
   }
 
@@ -80,12 +84,16 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
   return (
     <div className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5 pb-14 pt-24">
       <m.div
-        className="card card-frame overflow-hidden px-6 pb-8 pt-9"
+        className="card card-frame px-6 pb-8 pt-9"
         data-no-swipe
         initial={{ opacity: 0, y: 40, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.1, ease: easeCinema, delay: 0.15 }}
       >
+        <FlowerCluster className="-left-10 -top-12" scale={0.9} />
+        <div className="pointer-events-none absolute -bottom-5 -right-4">
+          <Blossom size={44} className="spin-slow" />
+        </div>
         <div className="flex justify-center gap-2" aria-hidden>
           {steps.map((s, i) => (
             <span key={s} className={`step-dot ${i <= index ? "on" : ""}`} />
@@ -129,20 +137,10 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
 
               {step === "dish" && (
                 <div className="text-center">
-                  <p className="kicker">el menú</p>
-                  <h2 className="script mt-2 text-5xl text-ink">Elige tu plato</h2>
-                  <p className="serif mt-3 text-lg italic text-muted">Para tenerlo listo cuando llegues.</p>
-                  <div className="mt-7 space-y-3">
-                    {dishes.map((d) => (
-                      <Choice
-                        key={d.id}
-                        on={dish === d.id}
-                        mark={d.mark}
-                        title={d.name}
-                        subtitle={d.description}
-                        onClick={() => chooseDish(d.id)}
-                      />
-                    ))}
+                  <h2 className="script text-5xl text-ink">Elige tu plato</h2>
+                  <p className="serif mt-2 text-lg italic text-muted">Para tenerlo listo cuando llegues.</p>
+                  <div className="-mx-3 mt-5">
+                    <MenuCard selected={dish} onSelect={chooseDish} compact />
                   </div>
                   <BackLink onClick={() => go("attending")} />
                 </div>
@@ -166,11 +164,11 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
                   />
                   <div className="mt-6 flex flex-wrap justify-center gap-2">
                     <button type="button" className="chip" onClick={() => go("attending")}>
-                      {attending === "si" ? "Asistiré" : "No asistiré"} <span className="text-gold">✎</span>
+                      {attending === "si" ? "Asistiré" : "No asistiré"} <span className="text-rose-deep">✎</span>
                     </button>
                     {attending === "si" && (
                       <button type="button" className="chip" onClick={() => go("dish")}>
-                        {dishName(dish)} <span className="text-gold">✎</span>
+                        {dishShort(dish)} <span className="text-rose-deep">✎</span>
                       </button>
                     )}
                   </div>

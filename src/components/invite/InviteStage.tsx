@@ -3,8 +3,8 @@
 import { motion as m } from "motion/react";
 import type { CSSProperties } from "react";
 import { event } from "@/lib/event";
-import { GradCap, PhotoFrame } from "./Decor";
-import { rise, stagger } from "./motion";
+import { Blossom, FlowerCluster, GradCap, PhotoFrame } from "./Decor";
+import { easeCinema, rise, stagger } from "./motion";
 
 /** Pantalla principal: "te invito a mi graduación" con la foto de la graduada. */
 export function InviteStage({ onNext }: { onNext: () => void }) {
@@ -30,6 +30,22 @@ export function InviteStage({ onNext }: { onNext: () => void }) {
           />
         </div>
         <m.div
+          className="absolute -bottom-10 -left-14"
+          initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ delay: 0.9, duration: 1.4, ease: easeCinema }}
+        >
+          <FlowerCluster className="relative" scale={1.15} />
+        </m.div>
+        <m.div
+          className="absolute -left-6 top-10"
+          initial={{ opacity: 0, scale: 0.4 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.3, duration: 1, type: "spring", bounce: 0.5 }}
+        >
+          <Blossom size={34} color="var(--rose-light)" center="var(--rose-deep)" className="floaty" />
+        </m.div>
+        <m.div
           className="absolute -right-8 -top-6 w-20 sm:-right-12 sm:w-24"
           initial={{ rotate: 18, y: -20, opacity: 0 }}
           animate={{ rotate: 14, y: 0, opacity: 1 }}
@@ -47,7 +63,7 @@ export function InviteStage({ onNext }: { onNext: () => void }) {
       </m.h1>
 
       <m.div variants={rise} className="ornament mt-5">
-        <span className="text-xs">✦</span>
+        <Blossom size={22} />
       </m.div>
 
       <m.p variants={rise} className="script mt-4 text-[clamp(2.4rem,10vw,3.6rem)] text-ink">
@@ -63,9 +79,9 @@ export function InviteStage({ onNext }: { onNext: () => void }) {
 
       <m.div variants={rise} className="mt-8 flex items-center gap-5 text-ink">
         <span className="serif text-lg uppercase tracking-[0.2em]">{event.weekday}</span>
-        <span className="h-10 w-px bg-gold/50" />
-        <span className="display text-4xl text-gold-deep">{event.day}</span>
-        <span className="h-10 w-px bg-gold/50" />
+        <span className="h-10 w-px bg-rose/60" />
+        <span className="display text-4xl text-rose-deep">{event.day}</span>
+        <span className="h-10 w-px bg-rose/60" />
         <span className="serif text-lg uppercase tracking-[0.2em]">{event.month.slice(0, 3)}</span>
       </m.div>
 

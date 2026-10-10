@@ -48,17 +48,45 @@ export const event = {
 
 export type DishId = "plato_1" | "plato_2" | "plato_3";
 
-/** Menú del brunch. Cambiar nombre y descripción cuando esté definido. */
-export const dishes: { id: DishId; name: string; description: string; mark: string }[] = [
-  { id: "plato_1", name: "Plato 1", description: "Descripción del plato 1", mark: "I" },
-  { id: "plato_2", name: "Plato 2", description: "Descripción del plato 2", mark: "II" },
-  { id: "plato_3", name: "Plato 3", description: "Descripción del plato 3", mark: "III" },
+/** Menú de desayuno de Recién Horneado (página 7 de la carta, sin precios). */
+export const menu = {
+  title: "Nuestro menú",
+  subtitle: "Desayuno",
+  note: "Incluye café y jugo de naranja.",
+};
+
+export const dishes: { id: DishId; name: string; short: string; description: string }[] = [
+  {
+    id: "plato_1",
+    name: "Típico Recién Horneado",
+    short: "Típico",
+    description:
+      "Dos huevos revueltos, frijoles molidos, crema o queso, plátano y salsa ranchera. Acompañado con un croissant recién horneado.",
+  },
+  {
+    id: "plato_2",
+    name: "Omelette Recién Horneado",
+    short: "Omelette",
+    description:
+      "Tocino, jamón, pierna mechada, cebolla salteada, queso cheddar. Acompañado de frijoles molidos y plátano.",
+  },
+  {
+    id: "plato_3",
+    name: "Croissant Recién Horneado",
+    short: "Croissant",
+    description:
+      "Croissant de mantequilla, omelette, jamón de pavo y queso cheddar. Acompañado con yogurt, granola y miel.",
+  },
 ];
 
 export const dishIds = dishes.map((d) => d.id);
 
 export function dishName(id: string | null) {
   return dishes.find((d) => d.id === id)?.name ?? "—";
+}
+
+export function dishShort(id: string | null) {
+  return dishes.find((d) => d.id === id)?.short ?? "—";
 }
 
 export function googleCalendarUrl() {

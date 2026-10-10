@@ -4,7 +4,7 @@ import { event } from "@/lib/event";
 export const size = { width: 512, height: 512 };
 export const contentType = "image/png";
 
-/** Sello dorado con el monograma sobre azul noche. */
+/** Sello de lacre rosado con el monograma sobre el rosa del menú. */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -15,7 +15,7 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0e1a2b",
+          background: "#e8acae",
         }}
       >
         <div
@@ -26,8 +26,8 @@ export default function Icon() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "linear-gradient(135deg, #8a6b37, #e3cb94 55%, #b8955a)",
-            color: "#fff6df",
+            background: "linear-gradient(135deg, #a85d6c, #d38d97 55%, #c47c86)",
+            color: "#fff4f2",
             fontSize: 240,
             fontFamily: "serif",
             fontStyle: "italic",

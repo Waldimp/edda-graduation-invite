@@ -16,15 +16,15 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "radial-gradient(ellipse at 50% 35%, #21364f, #0e1a2b 70%)",
-          color: "#e3cb94",
+          background: "radial-gradient(ellipse at 50% 35%, #fbe9e8, #e8acae 70%)",
+          color: "#9b5866",
           fontFamily: "serif",
         }}
       >
         <div style={{ fontSize: 26, letterSpacing: 14, textTransform: "uppercase" }}>te invito a celebrar</div>
-        <div style={{ fontSize: 110, marginTop: 18, color: "#f8f4ec", textTransform: "uppercase" }}>mi graduación</div>
+        <div style={{ fontSize: 110, marginTop: 18, color: "#fff", textTransform: "uppercase" }}>mi graduación</div>
         <div style={{ fontSize: 56, marginTop: 18, fontStyle: "italic" }}>{event.honoree}</div>
-        <div style={{ fontSize: 30, marginTop: 30, letterSpacing: 10, color: "#b8955a" }}>{event.dateShort}</div>
+        <div style={{ fontSize: 30, marginTop: 30, letterSpacing: 10, color: "#fff" }}>{event.dateShort}</div>
       </div>
     ),
     { ...size },

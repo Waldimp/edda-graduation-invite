@@ -169,7 +169,7 @@ export function InviteExperience() {
   const isCover = stage === "cover";
 
   return (
-    <main ref={rootRef} className={`stage-root ${isCover ? "is-night" : ""}`}>
+    <main ref={rootRef} className={`stage-root ${isCover ? "is-cover" : ""}`}>
       {!isCover && <div className="paper-bg" aria-hidden />}
 
       <AnimatePresence>

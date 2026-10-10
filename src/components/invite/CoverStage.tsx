@@ -3,16 +3,16 @@
 import { motion as m } from "motion/react";
 import { useEffect, useLayoutEffect, useRef, type CSSProperties } from "react";
 import { event } from "@/lib/event";
-import { Confetti, GradCap, Sparkles } from "./Decor";
+import { Blossom, Confetti, FallingPetals, FlowerCluster, GradCap, Sparkles, Sprig } from "./Decor";
 import { easeCinema, easeInOut, easeSoft } from "./motion";
 
 /** Duración de la apertura antes de pasar a la invitación. */
 export const OPEN_MS = 3600;
 
 /**
- * Portada: sobre marfil con sello de lacre sobre azul noche.
+ * Portada: sobre crema con sello de lacre rosado y florcitas, sobre fondo rosa.
  * Al tocar: el sello se levanta, la solapa se abre, la tarjeta sube,
- * el birrete sale volando con confeti dorado y se pasa a la invitación.
+ * el birrete sale volando con confeti y pétalos y se pasa a la invitación.
  */
 export function CoverStage({ opening, onOpen, onOpened }: { opening: boolean; onOpen: () => void; onOpened: () => void }) {
   const cb = useRef(onOpened);
@@ -33,8 +33,27 @@ export function CoverStage({ opening, onOpen, onOpened }: { opening: boolean; on
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.08, filter: "blur(12px)", transition: { duration: 1.1, ease: easeSoft } }}
     >
-      <div className="night-bg" aria-hidden />
+      <div className="cover-bg" aria-hidden />
       <Sparkles />
+      <FallingPetals />
+
+      {/* Ramilletes en las esquinas: se abren hacia afuera al abrir el sobre */}
+      <m.div
+        className="pointer-events-none absolute left-0 top-0 z-[2]"
+        initial={{ opacity: 0, x: -30, y: -30 }}
+        animate={opening ? { opacity: 0, x: -60, y: -60 } : { opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 1.4, ease: easeCinema, delay: opening ? 0.2 : 0.6 }}
+      >
+        <FlowerCluster className="-left-6 top-20 sm:left-6 sm:top-10" scale={1.25} />
+      </m.div>
+      <m.div
+        className="pointer-events-none absolute bottom-0 right-0 z-[2]"
+        initial={{ opacity: 0, x: 30, y: 30 }}
+        animate={opening ? { opacity: 0, x: 60, y: 60 } : { opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 1.4, ease: easeCinema, delay: opening ? 0.2 : 0.8 }}
+      >
+        <FlowerCluster className="-right-6 bottom-24 rotate-180 sm:right-6 sm:bottom-14" scale={1.25} />
+      </m.div>
 
       <m.div
         className="cover-top"
@@ -42,8 +61,8 @@ export function CoverStage({ opening, onOpen, onOpened }: { opening: boolean; on
         animate={opening ? { opacity: 0, y: -24 } : { opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: easeCinema, delay: opening ? 0 : 0.4 }}
       >
-        <p className="text-[0.65rem] uppercase tracking-[0.5em] text-gold-light/80">{event.classOf}</p>
-        <p className="script mt-2 text-4xl text-gold-light sm:text-5xl">{event.honoree}</p>
+        <p className="text-[0.65rem] uppercase tracking-[0.5em] text-cream/90">{event.classOf}</p>
+        <p className="script mt-2 text-5xl text-cream drop-shadow-[0_2px_8px_rgba(155,88,102,0.35)] sm:text-6xl">{event.honoree}</p>
       </m.div>
 
       <m.div
@@ -105,7 +124,13 @@ export function CoverStage({ opening, onOpen, onOpened }: { opening: boolean; on
             animate={opening ? { scale: [1, 1.18, 0.4], opacity: [1, 1, 0], rotate: [0, -8, 20] } : { scale: 1, opacity: 1, rotate: 0 }}
             transition={{ duration: 0.75, ease: easeSoft }}
           >
-            {event.monogram}
+            <div className="absolute -left-5 -top-6 rotate-[-30deg]">
+              <Sprig size={56} />
+            </div>
+            <div className="wax-seal-disc">{event.monogram}</div>
+            <div className="absolute -right-3 -top-4">
+              <Blossom size={30} color="#fff" center="var(--gold)" />
+            </div>
           </m.div>
 
           {opening && (

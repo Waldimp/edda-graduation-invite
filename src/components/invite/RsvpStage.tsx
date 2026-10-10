@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion as m } from "motion/react";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { dishShort, type DishId } from "@/lib/event";
 import { Blossom, FlowerCluster } from "./Decor";
 import { MenuCard } from "./MenuCard";
@@ -81,38 +81,37 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
     }
   }
 
+  const dots = (light = false) => (
+    <div className="flex justify-center gap-2" aria-hidden>
+      {steps.map((s, i) => (
+        <span key={s} className={`step-dot ${light ? "light" : ""} ${i <= index ? "on" : ""}`} />
+      ))}
+    </div>
+  );
+
   return (
     <div className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5 pb-14 pt-24">
       <m.div
-        className="card card-frame px-6 pb-8 pt-9"
+        className="relative"
         data-no-swipe
         initial={{ opacity: 0, y: 40, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.1, ease: easeCinema, delay: 0.15 }}
       >
-        <FlowerCluster className="-left-10 -top-12" scale={0.9} />
-        <div className="pointer-events-none absolute -bottom-5 -right-4">
-          <Blossom size={44} className="spin-slow" />
-        </div>
-        <div className="flex justify-center gap-2" aria-hidden>
-          {steps.map((s, i) => (
-            <span key={s} className={`step-dot ${i <= index ? "on" : ""}`} />
-          ))}
-        </div>
-
-        <div className="relative mt-6 min-h-[22rem]">
-          <AnimatePresence mode="wait" custom={dir} initial={false}>
-            <m.div
-              key={step}
-              custom={dir}
-              variants={stepVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.55, ease: easeCinema }}
-            >
-              {step === "attending" && (
-                <div className="text-center">
+        <AnimatePresence mode="wait" custom={dir} initial={false}>
+          <m.div
+            key={step}
+            custom={dir}
+            variants={stepVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.55, ease: easeCinema }}
+          >
+            {step === "attending" && (
+              <PaperCard>
+                {dots()}
+                <div className="mt-6 text-center">
                   <p className="kicker">confirmación</p>
                   <h2 className="script mt-2 text-5xl text-ink">¿Me acompañas?</h2>
                   <p className="serif mt-3 text-lg italic text-muted">Tu respuesta me ayuda a preparar todo.</p>
@@ -133,21 +132,34 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
                     />
                   </div>
                 </div>
-              )}
+              </PaperCard>
+            )}
 
-              {step === "dish" && (
-                <div className="text-center">
-                  <h2 className="script text-5xl text-ink">Elige tu plato</h2>
-                  <p className="serif mt-2 text-lg italic text-muted">Para tenerlo listo cuando llegues.</p>
-                  <div className="-mx-3 mt-5">
-                    <MenuCard selected={dish} onSelect={chooseDish} compact />
+            {/* En este paso la carta rosada es la tarjeta: nada de tarjeta dentro de tarjeta. */}
+            {step === "dish" && (
+              <MenuCard
+                selected={dish}
+                onSelect={chooseDish}
+                header={
+                  <div className="mb-5 text-center">
+                    {dots(true)}
+                    <p className="mt-5 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-white/90">
+                      elige tu plato
+                    </p>
                   </div>
-                  <BackLink onClick={() => go("attending")} />
-                </div>
-              )}
+                }
+                footer={
+                  <div className="text-center">
+                    <BackLink light onClick={() => go("attending")} />
+                  </div>
+                }
+              />
+            )}
 
-              {step === "name" && (
-                <form onSubmit={submit} className="text-center">
+            {step === "name" && (
+              <PaperCard>
+                {dots()}
+                <form onSubmit={submit} className="mt-6 text-center">
                   <p className="kicker">último paso</p>
                   <h2 className="script mt-2 text-5xl text-ink">¿Cómo te llamas?</h2>
                   <p className="serif mt-3 text-lg italic text-muted">Nombre y apellido, por favor.</p>
@@ -182,11 +194,24 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
                   </button>
                   <BackLink onClick={() => go(attending === "si" ? "dish" : "attending")} />
                 </form>
-              )}
-            </m.div>
-          </AnimatePresence>
-        </div>
+              </PaperCard>
+            )}
+          </m.div>
+        </AnimatePresence>
       </m.div>
+    </div>
+  );
+}
+
+/** Tarjeta de papel con florcitas para los pasos de sí/no y nombre. */
+function PaperCard({ children }: { children: ReactNode }) {
+  return (
+    <div className="card card-frame px-6 pb-8 pt-9">
+      <FlowerCluster className="-left-10 -top-12" scale={0.9} />
+      <div className="pointer-events-none absolute -bottom-5 -right-4">
+        <Blossom size={44} className="spin-slow" />
+      </div>
+      {children}
     </div>
   );
 }
@@ -215,9 +240,9 @@ function Choice({
   );
 }
 
-function BackLink({ onClick }: { onClick: () => void }) {
+function BackLink({ onClick, light = false }: { onClick: () => void; light?: boolean }) {
   return (
-    <button type="button" onClick={onClick} className="btn-link mt-6">
+    <button type="button" onClick={onClick} className={`btn-link mt-6 ${light ? "light" : ""}`}>
       ← atrás
     </button>
   );

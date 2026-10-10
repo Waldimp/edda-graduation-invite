@@ -62,7 +62,7 @@ export function CoverStage({ opening, onOpen, onOpened }: { opening: boolean; on
         transition={{ duration: 1.2, ease: easeCinema, delay: opening ? 0 : 0.4 }}
       >
         <p className="text-[0.65rem] uppercase tracking-[0.5em] text-cream/90">{event.classOf}</p>
-        <p className="script mt-2 text-5xl text-cream drop-shadow-[0_2px_8px_rgba(155,88,102,0.35)] sm:text-6xl">{event.honoree}</p>
+        <p className="script mt-2 text-5xl text-cream drop-shadow-[0_2px_8px_rgba(155,88,102,0.35)] sm:text-6xl">{event.honoreeShort}</p>
       </m.div>
 
       <m.div

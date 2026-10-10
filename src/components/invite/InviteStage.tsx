@@ -66,11 +66,14 @@ export function InviteStage({ onNext }: { onNext: () => void }) {
         <Blossom size={22} />
       </m.div>
 
-      <m.p variants={rise} className="script mt-4 text-[clamp(2.4rem,10vw,3.6rem)] text-ink">
+      <m.p variants={rise} className="script mt-4 max-w-sm text-balance text-[clamp(2.4rem,10vw,3.6rem)] leading-[1.1] text-ink">
         {event.honoree}
       </m.p>
-      <m.p variants={rise} className="mt-2 text-xs uppercase tracking-[0.3em] text-muted">
-        {event.degree} · {event.school}
+      <m.p variants={rise} className="mt-3 text-xs uppercase tracking-[0.3em] text-rose-dark">
+        {event.degree}
+      </m.p>
+      <m.p variants={rise} className="serif mt-1 max-w-xs text-base italic leading-snug text-muted">
+        {event.school} · {event.schoolShort}
       </m.p>
 
       <m.p variants={rise} className="serif mt-6 max-w-sm text-lg leading-relaxed text-ink/80">

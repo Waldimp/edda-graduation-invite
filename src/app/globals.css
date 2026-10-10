@@ -606,6 +606,14 @@ button.menu-dish:hover {
   color: var(--rose-dark);
 }
 
+.btn-link.light {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-link.light:hover {
+  color: #fff;
+}
+
 /* ——— RSVP ——— */
 
 .choice {
@@ -686,6 +694,14 @@ button.menu-dish:hover {
 .step-dot.on {
   width: 26px;
   background: var(--rose-deep);
+}
+
+.step-dot.light {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.step-dot.light.on {
+  background: #fff;
 }
 
 .chip {

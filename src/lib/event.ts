@@ -3,11 +3,14 @@
  * y menú definitivos, solo se cambia este archivo.
  */
 export const event = {
-  honoree: "Nombre de la graduada",
+  honoree: "Edda Stefany Monge Iraheta",
+  /** Versión corta para la portada, donde el nombre completo no cabe en grande. */
+  honoreeShort: "Edda Stefany",
   /** Iniciales para el sello y los marcos de foto vacíos. */
-  monogram: "G",
-  degree: "Licenciatura en …",
-  school: "Universidad …",
+  monogram: "E",
+  degree: "Ingeniería Industrial",
+  school: "Universidad Centroamericana José Simeón Cañas",
+  schoolShort: "UCA",
   classOf: "Promoción 2026",
   title: "Mi graduación",
   coverKicker: "Con mucha alegría",
@@ -42,7 +45,7 @@ export const event = {
     ],
   },
   rsvp: {
-    deadlineNote: "Por favor confirma antes del 20 de octubre.",
+    deadlineNote: "Por favor confirma antes del lunes 12 de octubre.",
   },
 } as const;
 

@@ -1,24 +1,28 @@
 "use client";
 
 import { motion as m } from "motion/react";
+import type { ReactNode } from "react";
 import { dishes, menu, type DishId } from "@/lib/event";
 import { Blossom, Daisy, Sprig } from "./Decor";
 
 /**
  * Carta rosada al estilo del menú de Recién Horneado (sin precios).
- * Con `onSelect` cada plato se vuelve un botón para elegir.
+ * Con `onSelect` cada plato se vuelve un botón para elegir; `header` y
+ * `footer` permiten usarla como la tarjeta completa de un paso.
  */
 export function MenuCard({
   selected = null,
   onSelect,
-  compact = false,
+  header,
+  footer,
 }: {
   selected?: DishId | null;
   onSelect?: (id: DishId) => void;
-  compact?: boolean;
+  header?: ReactNode;
+  footer?: ReactNode;
 }) {
   return (
-    <div className={`menu-card ${compact ? "px-4 pb-5 pt-7" : "px-5 pb-6 pt-9"}`}>
+    <div className="menu-card px-4 pb-6 pt-7">
       {/* Florcitas en las esquinas */}
       <div className="pointer-events-none absolute -right-3 -top-3" aria-hidden>
         <Blossom size={46} color="#fff" center="var(--gold)" className="spin-slow" />
@@ -33,13 +37,15 @@ export function MenuCard({
         <Daisy size={34} />
       </div>
 
+      {header && <div className="relative">{header}</div>}
+
       <div className="relative px-2 text-left">
         <p className="menu-title">{menu.title}</p>
         <p className="menu-subtitle">{menu.subtitle}</p>
         <p className="serif mt-2 text-base italic opacity-90">{menu.note}</p>
       </div>
 
-      <div className={`relative ${compact ? "mt-4 space-y-1" : "mt-6 space-y-2"}`}>
+      <div className="relative mt-4 space-y-1">
         {dishes.map((d) => {
           const on = selected === d.id;
           const body = (
@@ -69,6 +75,8 @@ export function MenuCard({
           );
         })}
       </div>
+
+      {footer && <div className="relative">{footer}</div>}
     </div>
   );
 }

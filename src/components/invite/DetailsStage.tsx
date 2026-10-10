@@ -3,10 +3,9 @@
 import { motion as m } from "motion/react";
 import { event, googleCalendarUrl } from "@/lib/event";
 import { Blossom, Daisy, FlowerCluster, PhotoFrame } from "./Decor";
-import { MenuCard } from "./MenuCard";
 import { rise, stagger } from "./motion";
 
-/** Detalles: fecha, hora, lugar con mapa, menú, código de vestimenta y recuerdos. */
+/** Detalles: fecha, hora, lugar con mapa, código de vestimenta y recuerdos. */
 export function DetailsStage({ onNext }: { onNext: () => void }) {
   const mapEmbed = `https://maps.google.com/maps?q=${event.lat},${event.lng}&z=16&output=embed`;
 
@@ -66,13 +65,6 @@ export function DetailsStage({ onNext }: { onNext: () => void }) {
             cómo llegar
           </a>
         </div>
-      </m.div>
-
-      {/* Menú */}
-      <m.div variants={rise} className="relative mt-10 w-full">
-        <p className="kicker mb-4">qué vamos a desayunar</p>
-        <MenuCard compact />
-        <p className="serif mt-3 text-base italic text-muted">Eliges tu plato al confirmar.</p>
       </m.div>
 
       {/* Código de vestimenta */}

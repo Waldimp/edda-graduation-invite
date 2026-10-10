@@ -145,7 +145,7 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
   const at = `${origin.x}px ${origin.y}px`;
 
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5 pb-14 pt-24">
+    <div className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5 pb-28 pt-10">
       <m.div
         ref={cardRef}
         className="rsvp-card"
@@ -190,7 +190,7 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
               <Blossom size={46} color="#fff" center="var(--gold)" className="spin-slow" />
             </div>
             <div className="absolute right-12 top-7">
-              <Blossom size={20} color="var(--rose-light)" center="var(--rose-dark)" />
+              <Blossom size={20} color="var(--menu-light)" center="var(--menu-dark)" />
             </div>
             <div className="absolute -bottom-4 -right-2 rotate-[30deg]">
               <Sprig size={70} className="sway" />
@@ -213,7 +213,7 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
                 animate={{ x: p.x, y: p.y, scale: [0, 1, 0.7], opacity: [0, 1, 0], rotate: p.spin }}
                 transition={{ duration: 1.5, ease: easeCinema, delay: 0.05 + i * 0.02 }}
               >
-                <Blossom size={p.size} color={i % 3 ? "#fff" : "var(--rose-light)"} center="var(--gold)" />
+                <Blossom size={p.size} color={i % 3 ? "#fff" : "var(--menu-light)"} center="var(--gold)" />
               </m.span>
             ))}
           </div>
@@ -224,7 +224,7 @@ export function RsvpStage({ onDone }: { onDone: (result: RsvpResult) => void }) 
           className="rsvp-frame"
           aria-hidden
           initial={false}
-          animate={{ borderColor: rose ? "rgba(255,255,255,0.55)" : "rgba(196,124,134,0.28)" }}
+          animate={{ borderColor: rose ? "rgba(255,255,255,0.55)" : "rgba(236,79,134,0.28)" }}
           transition={{ duration: 0.9, delay: rose ? 0.4 : 0 }}
         />
 

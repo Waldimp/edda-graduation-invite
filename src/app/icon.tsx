@@ -4,7 +4,7 @@ import { event } from "@/lib/event";
 export const size = { width: 512, height: 512 };
 export const contentType = "image/png";
 
-/** Sello de lacre rosado con el monograma sobre el rosa del menú. */
+/** Monograma en rosa intenso sobre el durazno de la paleta. */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -15,7 +15,7 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#e8acae",
+          background: "#ffd094",
         }}
       >
         <div
@@ -26,8 +26,8 @@ export default function Icon() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "linear-gradient(135deg, #a85d6c, #d38d97 55%, #c47c86)",
-            color: "#fff4f2",
+            background: "linear-gradient(135deg, #c2306a, #ec4f86 60%, #f47aa3)",
+            color: "#fffbf5",
             fontSize: 240,
             fontFamily: "serif",
             fontStyle: "italic",

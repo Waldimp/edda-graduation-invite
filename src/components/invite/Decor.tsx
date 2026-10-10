@@ -72,7 +72,7 @@ export function FallingPetals({ className = "" }: { className?: string }) {
 /** Flor de cinco pétalos (tipo cerezo). */
 export function Blossom({
   size = 40,
-  color = "var(--rose)",
+  color = "var(--flower)",
   center = "var(--gold)",
   className = "",
   style,
@@ -108,7 +108,7 @@ export function Daisy({ size = 36, className = "", style }: { size?: number; cla
   return (
     <svg viewBox="-20 -20 40 40" width={size} height={size} className={`flower ${className}`} style={style} aria-hidden>
       {Array.from({ length: 12 }, (_, i) => (
-        <ellipse key={i} cx="0" cy="-10.5" rx="3.4" ry="8" fill="#fff" stroke="rgba(196,124,134,.35)" strokeWidth=".5" transform={`rotate(${i * 30})`} />
+        <ellipse key={i} cx="0" cy="-10.5" rx="3.4" ry="8" fill="#fff" stroke="rgba(236,79,134,.3)" strokeWidth=".5" transform={`rotate(${i * 30})`} />
       ))}
       <circle r="5" fill="var(--gold-light)" />
       <circle r="5" fill="none" stroke="var(--gold)" strokeWidth="1" strokeDasharray="1 1.4" />
@@ -199,7 +199,7 @@ export function GradCap({ className = "", style }: { className?: string; style?:
       <path d="M92 64 h8 l2 14 h-12 Z" fill="url(#cap-gold)" />
       <g transform="translate(36 34) scale(.42)">
         {[0, 72, 144, 216, 288].map((r) => (
-          <path key={r} d="M0 0 C -7 -6 -6 -16 0 -18 C 6 -16 7 -6 0 0 Z" fill="#f6d6d6" transform={`rotate(${r})`} />
+          <path key={r} d="M0 0 C -7 -6 -6 -16 0 -18 C 6 -16 7 -6 0 0 Z" fill="var(--flower)" transform={`rotate(${r})`} />
         ))}
         <circle r="3.4" fill="#ecd3a3" />
       </g>
@@ -207,7 +207,7 @@ export function GradCap({ className = "", style }: { className?: string; style?:
   );
 }
 
-const CONFETTI_COLORS = ["#fff", "#f6d6d6", "#e8acae", "#c47c86", "#ecd3a3"];
+const CONFETTI_COLORS = ["#fff", "#ffe4bd", "#f7a1bf", "#ec4f86", "#ffd9a0"];
 
 /** Ráfaga de confeti y pétalos desde el centro del contenedor. */
 export function Confetti({ count = 42, spread = 1 }: { count?: number; spread?: number }) {
@@ -274,7 +274,7 @@ export function PhotoFrame({
   if (variant === "polaroid") {
     return (
       <div className={`photo-polaroid ${className}`}>
-        <div className="absolute bottom-[30px] left-2 right-2 top-2 overflow-hidden bg-blush">{inner}</div>
+        <div className="absolute inset-[6px] overflow-hidden bg-blush">{inner}</div>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
-import { dishes, dishName, event } from "@/lib/event";
+import { dishes, dishName, event, retiredDishes } from "@/lib/event";
 import type { RsvpRow } from "@/lib/supabase";
 
 const labels = {
@@ -77,7 +77,13 @@ export default function AdminPage() {
       responses: rsvps.length,
       going: going.length,
       declined: rsvps.length - going.length,
-      byDish: dishes.map((d) => ({ ...d, count: going.filter((r) => r.dish === d.id).length })),
+      // Los platos retirados solo aparecen si alguien los eligió antes de quitarlos.
+      byDish: [
+        ...dishes.map((d) => ({ ...d, count: going.filter((r) => r.dish === d.id).length })),
+        ...retiredDishes
+          .map((d) => ({ ...d, short: `${d.short} (retirado)`, count: going.filter((r) => r.dish === d.id).length }))
+          .filter((d) => d.count > 0),
+      ],
     };
   }, [rsvps]);
 

@@ -27,6 +27,8 @@ export function InviteExperience() {
   const [dir, setDir] = useState(1);
   const [opening, setOpening] = useState(false);
   const [result, setResult] = useState<RsvpResult | null>(null);
+  /** Al llegar desde el sobre la hoja ya está en su lugar: no hay entrada que animar. */
+  const [fromCover, setFromCover] = useState(false);
   const rootRef = useRef<HTMLElement>(null);
   const stageRef = useRef(stage);
   const openingRef = useRef(opening);
@@ -40,6 +42,7 @@ export function InviteExperience() {
     if (next === current || openingRef.current) return;
     if (next === "thanks" && !result) return;
     playWhoosh();
+    setFromCover(false);
     setDir(ORDER.indexOf(next) > ORDER.indexOf(current) ? 1 : -1);
     if (next === "cover") {
       openingRef.current = false;
@@ -60,6 +63,7 @@ export function InviteExperience() {
   function finishOpening() {
     openingRef.current = false;
     setOpening(false);
+    setFromCover(true);
     setDir(1);
     stageRef.current = "invite";
     setStage("invite");
@@ -170,16 +174,17 @@ export function InviteExperience() {
 
   return (
     <main ref={rootRef} className={`stage-root ${isCover ? "is-cover" : ""}`}>
-      {!isCover && <div className="paper-bg" aria-hidden />}
+      {/* Siempre debajo: la portada se funde sobre este papel al abrir el sobre */}
+      <div className="paper-bg" aria-hidden />
 
       <AnimatePresence>
         {!isCover && (
           <m.div
             key="rail"
             className="rail-wrap"
-            initial={{ opacity: 0, y: -16 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
+            exit={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.8, ease: easeSoft, delay: 0.3 }}
           >
             <JourneyRail stage={stage} onGo={goToStage} />
@@ -197,7 +202,7 @@ export function InviteExperience() {
             key={stage}
             custom={dir}
             variants={stageVariants}
-            initial="enter"
+            initial={fromCover ? false : "enter"}
             animate="center"
             exit="exit"
             transition={{ duration: 0.9, ease: easeCinema }}

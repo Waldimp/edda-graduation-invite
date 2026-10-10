@@ -6,7 +6,7 @@ Next.js 16 (App Router) + motion + Tailwind 4 + Supabase. Misma arquitectura que
 
 1. **Portada**: sobre con sello de lacre → al tocar se abre, sale el birrete con confeti y sube la tarjeta.
 2. **Invitación**: "te invito a celebrar mi graduación", foto de la graduada, fecha.
-3. **Detalles**: fecha/hora, lugar con mapa (Recién Horneado · San Benito), calendario, vestimenta, recuerdos.
+3. **Detalles**: fecha/hora, lugar con mapa (Recién Horneado · San Benito), calendario y recuerdos.
 4. **Confirmar** (una decisión por pantalla): ¿vienes? → plato (solo si viene) → nombre → guardar.
 5. **Gracias**: mensaje distinto si viene o no.
 

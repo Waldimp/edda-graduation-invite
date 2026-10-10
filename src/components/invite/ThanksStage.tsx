@@ -12,7 +12,7 @@ export function ThanksStage({ result, onHome }: { result: RsvpResult; onHome: ()
 
   return (
     <m.div
-      className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center px-6 pb-14 pt-20 text-center"
+      className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center px-6 pb-28 pt-10 text-center"
       variants={stagger}
       initial="hidden"
       animate="show"

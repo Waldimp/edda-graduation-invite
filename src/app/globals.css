@@ -1,25 +1,34 @@
 @import "tailwindcss";
 
 /*
- * Identidad: rosa empolvado del menú de Recién Horneado + crema + toques
- * dorados y hojitas salvia. Para cambiar la paleta basta con tocar estos tokens.
+ * Identidad: paleta "Beach Umbrella" (durazno #FFD094 con rosa intenso) + crema
+ * y hojitas salvia. Los nombres de token se quedaron de la versión rosada; para
+ * cambiar la paleta basta con tocar estos valores.
  */
 :root {
-  --rose: #e8acae;
-  --rose-light: #f6d6d6;
-  --rose-deep: #c47c86;
-  --rose-dark: #9b5866;
-  --blush: #fbe9e8;
-  --petal: #fdf4f2;
-  --cream: #fffaf7;
-  --ink: #5a3a42;
-  --muted: #8f7176;
-  --gold: #c9a46c;
-  --gold-light: #ecd3a3;
+  --rose: #ffd094;
+  --rose-light: #ffe4bd;
+  --rose-deep: #ec4f86;
+  --rose-dark: #c2306a;
+  --blush: #fff0db;
+  --petal: #fff8ee;
+  --cream: #fffbf5;
+  --ink: #5c2a3c;
+  --muted: #9b6b6e;
+  --gold: #e8a53c;
+  --gold-light: #ffd9a0;
+  --flower: #f7a1bf;
   --leaf: #a3b89c;
   --leaf-deep: #7f9978;
-  --line: rgba(196, 124, 134, 0.34);
-  --shadow: 0 24px 60px rgba(155, 88, 102, 0.16);
+  --line: rgba(236, 79, 134, 0.28);
+  --shadow: 0 24px 60px rgba(194, 48, 106, 0.13);
+
+  /* La carta del menú conserva el rosa de Recién Horneado. */
+  --menu: #e8acae;
+  --menu-light: #f6d6d6;
+  --menu-deep: #c47c86;
+  --menu-dark: #9b5866;
+  --menu-blush: #fbe9e8;
 }
 
 @theme inline {
@@ -34,6 +43,7 @@
   --color-muted: var(--muted);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
+  --color-flower: var(--flower);
   --color-leaf: var(--leaf);
   --font-sans: var(--font-body);
   --font-serif: var(--font-serif);
@@ -74,9 +84,9 @@ body {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(232, 172, 174, 0.32), transparent 60%),
-    radial-gradient(ellipse at 50% 110%, rgba(232, 172, 174, 0.28), transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23e8acae' fill-opacity='.22'%3E%3Cg transform='translate(24 26)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Cg transform='translate(86 84) scale(.7)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23c9a46c' fill-opacity='.3'%3E%3Ccircle cx='24' cy='26' r='1.6'/%3E%3Ccircle cx='86' cy='84' r='1.2'/%3E%3Ccircle cx='70' cy='30' r='1'/%3E%3Ccircle cx='30' cy='90' r='1'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 208, 148, 0.45), transparent 60%),
+    radial-gradient(ellipse at 50% 110%, rgba(255, 208, 148, 0.4), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23f7a1bf' fill-opacity='.22'%3E%3Cg transform='translate(24 26)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3Cg transform='translate(86 84) scale(.7)'%3E%3Ccircle cx='0' cy='-5' r='4'/%3E%3Ccircle cx='4.8' cy='-1.5' r='4'/%3E%3Ccircle cx='3' cy='4' r='4'/%3E%3Ccircle cx='-3' cy='4' r='4'/%3E%3Ccircle cx='-4.8' cy='-1.5' r='4'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23e8a53c' fill-opacity='.3'%3E%3Ccircle cx='24' cy='26' r='1.6'/%3E%3Ccircle cx='86' cy='84' r='1.2'/%3E%3Ccircle cx='70' cy='30' r='1'/%3E%3Ccircle cx='30' cy='90' r='1'/%3E%3C/g%3E%3C/svg%3E"),
     var(--petal);
 }
 
@@ -87,7 +97,7 @@ body {
   pointer-events: none;
   background:
     radial-gradient(ellipse at 50% 38%, rgba(255, 250, 247, 0.5), transparent 58%),
-    radial-gradient(ellipse at 50% 120%, var(--rose-deep), transparent 60%),
+    radial-gradient(ellipse at 50% 120%, #ffb978, transparent 60%),
     var(--rose);
 }
 
@@ -120,7 +130,7 @@ body {
   width: var(--size, 14px);
   height: calc(var(--size, 14px) * 0.75);
   border-radius: 80% 0 80% 0;
-  background: linear-gradient(135deg, #fff, var(--rose-light));
+  background: linear-gradient(135deg, #fff, var(--flower));
   opacity: 0.85;
   animation: petal-fall var(--dur, 12s) linear var(--delay, 0s) infinite;
 }
@@ -160,7 +170,7 @@ body {
   right: 0;
   z-index: 3;
   text-align: center;
-  color: var(--cream);
+  color: var(--rose-dark);
 }
 
 .envelope {
@@ -181,16 +191,16 @@ body {
 }
 
 .env-back {
-  background: linear-gradient(180deg, #f6e9e6, #efdcd8);
-  box-shadow: 0 40px 70px rgba(155, 88, 102, 0.35);
+  background: linear-gradient(180deg, #fbefe0, #f4e2cc);
+  box-shadow: 0 40px 70px rgba(194, 110, 60, 0.3);
 }
 
 .env-pocket {
   z-index: 4;
   background:
-    linear-gradient(155deg, transparent 49.6%, rgba(196, 124, 134, 0.18) 50%, transparent 50.6%),
-    linear-gradient(205deg, transparent 49.6%, rgba(196, 124, 134, 0.18) 50%, transparent 50.6%),
-    linear-gradient(180deg, #fffaf7, #f7ebe8);
+    linear-gradient(155deg, transparent 49.6%, rgba(236, 79, 134, 0.16) 50%, transparent 50.6%),
+    linear-gradient(205deg, transparent 49.6%, rgba(236, 79, 134, 0.16) 50%, transparent 50.6%),
+    linear-gradient(180deg, #fffbf5, #fbf0e2);
   clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
   pointer-events: none;
 }
@@ -199,11 +209,12 @@ body {
   z-index: 5;
   height: 60%;
   transform-origin: 50% 0;
-  background: linear-gradient(180deg, #fbf1ee, #f1e1dc);
+  background: linear-gradient(180deg, #fdf3e6, #f6e4cf);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   pointer-events: none;
 }
 
+/* Posición de la carta dentro del sobre; el look lo da `.letter`. */
 .env-card {
   position: absolute;
   left: 6%;
@@ -215,21 +226,36 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  text-align: center;
+}
+
+/*
+ * El papel de la carta. Es el mismo en el sobre, en la transición y en la
+ * pantalla de Invitación, para que se sienta una sola hoja.
+ */
+/* Sin `position`: cada uso pone la suya (absolute en el sobre, relative en la pantalla). */
+.letter {
+  border-radius: 6px;
   background: var(--cream);
   border: 1px solid var(--line);
-  box-shadow: 0 10px 30px rgba(155, 88, 102, 0.12);
-  text-align: center;
+  box-shadow: 0 10px 30px rgba(194, 48, 106, 0.1);
   color: var(--ink);
 }
 
-.env-card::before {
+.letter::before {
   content: "";
   position: absolute;
   inset: 8px;
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 3px;
   pointer-events: none;
+}
+
+/* La hoja ya extendida: un poquito translúcida sobre el fondo. */
+.letter-sheet {
+  background: rgba(255, 251, 245, 0.86);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
 }
 
 .wax-seal {
@@ -237,30 +263,16 @@ body {
   left: 50%;
   top: 60%;
   z-index: 6;
-  width: clamp(64px, 18vw, 86px);
+  width: clamp(76px, 22vw, 100px);
   aspect-ratio: 1;
   translate: -50% -50%;
   pointer-events: none;
 }
 
-.wax-seal-disc {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 46% 54% 50% 50% / 52% 48% 52% 48%;
-  background:
-    radial-gradient(circle at 35% 30%, #f7d3d6, transparent 45%),
-    radial-gradient(circle at 50% 50%, #d38d97, #a85d6c 78%);
-  box-shadow:
-    inset 0 0 0 5px rgba(155, 88, 102, 0.4),
-    inset 0 -6px 12px rgba(110, 50, 62, 0.3),
-    0 8px 18px rgba(110, 50, 62, 0.3);
-  color: #fff4f2;
-  font-family: var(--font-script), cursive;
-  font-size: clamp(2rem, 7vw, 2.6rem);
-  line-height: 1;
-  text-shadow: 0 1px 1px rgba(110, 50, 62, 0.5);
+/* Botón de tela al centro del sobre (recortado de la imagen que eligió Edda). */
+.cover-button {
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(90, 55, 40, 0.35));
 }
 
 .cover-hit {
@@ -287,7 +299,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--cream);
+  color: var(--rose-dark);
 }
 
 .grad-cap {
@@ -299,7 +311,7 @@ body {
   margin-left: calc(clamp(90px, 26vw, 130px) / -2);
   margin-top: -40px;
   pointer-events: none;
-  filter: drop-shadow(0 12px 18px rgba(110, 50, 62, 0.3));
+  filter: drop-shadow(0 12px 18px rgba(92, 42, 60, 0.3));
 }
 
 .confetti-piece {
@@ -373,7 +385,7 @@ body {
 
 /* Texto rosa dorado con brillo suave. */
 .gold-text {
-  background: linear-gradient(100deg, var(--rose-dark) 0%, var(--rose-deep) 28%, var(--gold) 50%, var(--rose-deep) 72%, var(--rose-dark) 100%);
+  background: linear-gradient(100deg, var(--rose-dark) 0%, var(--rose-deep) 30%, var(--gold) 50%, var(--rose-deep) 70%, var(--rose-dark) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -442,11 +454,11 @@ body {
   box-shadow: 0 0 0 8px rgba(255, 250, 247, 0.95), 0 0 0 9px var(--line), var(--shadow);
 }
 
+/* Marco blanco parejo en los cuatro lados (antes tenía el borde ancho abajo, tipo polaroid). */
 .photo-polaroid {
   position: relative;
   background: #fffdfb;
-  padding: 8px 8px 30px;
-  box-shadow: 0 14px 30px rgba(155, 88, 102, 0.16);
+  box-shadow: 0 14px 30px rgba(194, 48, 106, 0.14);
 }
 
 .photo-empty {
@@ -482,7 +494,7 @@ body {
   /* El degradé arranca en rosa claro y se asienta en el rosa del menú. */
   background:
     radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.25), transparent 60%),
-    linear-gradient(135deg, var(--blush) 0%, var(--rose-light) 22%, var(--rose) 45%, var(--rose) 70%, var(--rose-deep) 100%);
+    linear-gradient(135deg, var(--menu-blush) 0%, var(--menu-light) 22%, var(--menu) 45%, var(--menu) 70%, var(--menu-deep) 100%);
   background-size: 100% 100%, 260% 260%;
 }
 
@@ -566,7 +578,7 @@ button.menu-dish:hover {
 
 .menu-dish.on .menu-radio {
   background: #fff;
-  color: var(--rose-dark);
+  color: var(--menu-dark);
 }
 
 /* ——— Botones ——— */
@@ -578,19 +590,19 @@ button.menu-dish:hover {
   gap: 0.6rem;
   border-radius: 999px;
   padding: 0.95rem 1.8rem;
-  background: linear-gradient(135deg, var(--rose-dark), var(--rose-deep) 55%, var(--rose) 100%);
+  background: linear-gradient(135deg, var(--rose-dark), var(--rose-deep) 60%, #f47aa3 100%);
   color: #fff;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  box-shadow: 0 10px 24px rgba(196, 124, 134, 0.35);
+  box-shadow: 0 10px 24px rgba(236, 79, 134, 0.3);
   transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(196, 124, 134, 0.45);
+  box-shadow: 0 14px 30px rgba(236, 79, 134, 0.4);
 }
 
 .btn-gold:disabled {
@@ -664,7 +676,7 @@ button.menu-dish:hover {
 .choice.on {
   border-color: var(--rose-deep);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(232, 172, 174, 0.35), 0 12px 26px rgba(196, 124, 134, 0.18);
+  box-shadow: 0 0 0 3px rgba(255, 208, 148, 0.55), 0 12px 26px rgba(236, 79, 134, 0.16);
 }
 
 .choice-mark {
@@ -682,7 +694,7 @@ button.menu-dish:hover {
 }
 
 .choice.on .choice-mark {
-  background: linear-gradient(135deg, var(--rose-deep), var(--rose));
+  background: linear-gradient(135deg, var(--rose-dark), var(--rose-deep));
   color: #fff;
   border-color: transparent;
 }
@@ -702,7 +714,7 @@ button.menu-dish:hover {
 }
 
 .name-input::placeholder {
-  color: rgba(143, 113, 118, 0.45);
+  color: rgba(155, 107, 110, 0.45);
 }
 
 .name-input:focus {
@@ -744,9 +756,10 @@ button.menu-dish:hover {
 
 /* ——— Riel de navegación ——— */
 
+/* Riel fijo abajo, a la mano del pulgar. */
 .rail-wrap {
   position: fixed;
-  top: max(0.8rem, env(safe-area-inset-top));
+  bottom: max(0.9rem, env(safe-area-inset-bottom));
   left: 0;
   right: 0;
   z-index: 30;
@@ -764,7 +777,7 @@ button.menu-dish:hover {
   background: rgba(255, 250, 247, 0.82);
   padding: 0.35rem 0.5rem;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 22px rgba(155, 88, 102, 0.1);
+  box-shadow: 0 8px 22px rgba(194, 48, 106, 0.1);
   pointer-events: auto;
 }
 
@@ -779,7 +792,7 @@ button.menu-dish:hover {
 }
 
 .rail-step.active {
-  background: var(--rose);
+  background: var(--rose-deep);
   color: #fff;
 }
 

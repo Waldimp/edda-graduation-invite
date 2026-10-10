@@ -105,8 +105,8 @@ export function InviteStage({ onNext }: { onNext: () => void }) {
         </m.div>
 
         <m.div variants={rise} className="mt-10">
-          <button type="button" onClick={onNext} className="btn-gold">
-            ver detalles <span aria-hidden>→</span>
+          <button type="button" onClick={onNext} className="btn-gold btn-cta">
+            ver detalles <span className="cta-arrow" aria-hidden>→</span>
           </button>
         </m.div>
       </m.div>

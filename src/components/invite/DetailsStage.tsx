@@ -99,8 +99,8 @@ export function DetailsStage({ onNext }: { onNext: () => void }) {
 
       <m.div variants={rise} className="mt-12 flex flex-col items-center gap-3">
         <p className="serif text-lg italic text-muted">{event.rsvp.deadlineNote}</p>
-        <button type="button" onClick={onNext} className="btn-gold">
-          confirmar asistencia <span aria-hidden>→</span>
+        <button type="button" onClick={onNext} className="btn-gold btn-cta">
+          confirmar asistencia <span className="cta-arrow" aria-hidden>→</span>
         </button>
       </m.div>
     </m.div>

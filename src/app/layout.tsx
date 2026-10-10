@@ -22,7 +22,7 @@ const body = Jost({
   weight: ["300", "400", "500", "600"],
 });
 
-const description = `Te invito a celebrar mi graduación — ${event.dateShort}`;
+const description = `Te invito a celebrar mi graduación · ${event.dateLabel}, ${event.time} · ${event.venue} San Benito`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3002"),

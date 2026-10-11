@@ -50,7 +50,7 @@ export const event = {
     ],
   },
   rsvp: {
-    deadlineNote: "Por favor confirma antes del lunes 12 de octubre.",
+    deadlineNote: "Por favor confirma antes del martes 13 de octubre.",
   },
 } as const;
 
